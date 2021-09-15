@@ -1,4 +1,4 @@
-#!/home/amalaleena/Desktop/Amal/programming/Recipie-website-django/virt/bin/python3
+#!/home/amalaleena/Desktop/Recipie-Website/virt/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
