@@ -15,14 +15,14 @@ def all_recipies(request,recipie_list=None):
 	pa=Paginator(recipie_list,9)
 	page=request.GET.get('page')
 	recipie_list=pa.get_page(page)
-
-
-
 	return render(request,'website_app/recipie_list.html',
 		{'recipie_list':recipie_list})
 
 def recipie_description(request,recipie_id):
 	recipie=Recipies.objects.get(recipie_id=recipie_id)
+	recipie.view_count+=1
+	recipie.save()
+
 	return render(request,'website_app/recipie_desc.html',
 		{"recipie":recipie})
 
@@ -51,3 +51,5 @@ def search_recipies(request):
 	else:
 		return all_recipies(request)
 
+def my_profile(request):
+	return render(request,'website_app/profile.html',{})
