@@ -1,0 +1,26 @@
+{% extends 'website_app/base.html' %}
+
+ 	
+{% block content %}
+{%  if form.errors %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Alert</strong> {{form.errors}}
+  
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+<h1>Sign Up</h1>
+
+<form action="{% url 'register-user' %}" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	{% for i in form %}
+		{{i.name}}  {{i}}<br>
+	{% endfor %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+	
+</form>
+<br><br><br><br>
+{% endblock %}

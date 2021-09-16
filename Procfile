@@ -1,0 +1,1 @@
+web: gunicorn recipie_website.wsgi

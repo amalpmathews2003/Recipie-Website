@@ -1,0 +1,29 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+{% extends 'website_app/base.html' %}
+{% block content%}
+	{% if user.is_authenticated %}
+		<h1>Add Recipie to database</h1>
+		<br><br>
+		{% if submitted %}
+			Your  Recipie Was submitted succsfully
+		{% else %}	
+			<center>
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{form.as_p}}
+
+				<input type="submit" name="" value="Submit" class="btn btn-secondary">
+			</form>
+			</center>
+		{% endif %}
+	{% else %}
+
+	<h1>Sorry you have to login</h1>
+	<a href="{% url 'login-page' %}">Login</a>
+
+	{% endif %}
+{% endblock %}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>

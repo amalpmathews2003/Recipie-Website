@@ -1,0 +1,13 @@
+{% extends 'website_app/base.html' %}
+
+{% block content %}
+	<h1>Recipies</h1>
+
+	<div class="card-deck">
+	{% for recipie in recipie_list %}
+		{% include 'website_app/cards.html' %}
+	{% endfor %}
+	</div>	
+{% include 'website_app/page_navigation.html' %}
+
+{% endblock %}
