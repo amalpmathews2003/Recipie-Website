@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import threading
+import requests
 
 class Recipie:
 	def __init__(self,url,category):
