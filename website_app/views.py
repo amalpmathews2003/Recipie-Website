@@ -29,7 +29,7 @@ def recipie_description(request,recipie_id):
 def add_recipie(request):
 	submitted=False
 	if request.method=="POST":
-		form=RecipieForm(request.POST)
+		form=RecipieForm(request.POST,request.FILES)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(
