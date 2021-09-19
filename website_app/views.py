@@ -84,8 +84,8 @@ def add_to_database2(request,pages=2,category=2):
 	return render(request,'website_app/profile.html',{})
 
 
-def add_to_database(request):
-	t=threading.Thread(target=temp_func)
+def add_to_database(request,pages=2,category=2):
+	t=threading.Thread(target=temp_func,args=(request,pages,category)
 	t.start()
 	return render(request,'website_app/home.html',{})
 	
