@@ -58,7 +58,7 @@ def search_recipies(request):
 def my_profile(request):
 	return render(request,'website_app/profile.html',{})
 
-def add_to_database(request,pages=2,category=2):
+def add_to_database2(request,pages=2,category=2):
 	recipies=main(pages=2,category=2)
 	for r in recipies:
 		if Recipies.objects.filter(recipie_name=r.title).exists():
@@ -82,3 +82,10 @@ def add_to_database(request,pages=2,category=2):
 		print(recipie)
 	print('*'*10)
 	return render(request,'website_app/profile.html',{})
+
+
+def add_to_database(request):
+	t=threading.Thread(target=temp_func)
+	t.start()
+	return render(request,'website_app/home.html',{})
+	
