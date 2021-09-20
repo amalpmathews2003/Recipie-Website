@@ -17,7 +17,7 @@ def all_recipies(request,recipie_list=None):
 	if recipie_list==None:
 		recipie_list=Recipies.objects.get_queryset().order_by('recipie_name')
 
-	pa=Paginator(recipie_list,12)
+	pa=Paginator(recipie_list,9)
 	page=request.GET.get('page')
 	recipie_list=pa.get_page(page)
 	return render(request,'website_app/recipie_list.html',
@@ -76,8 +76,9 @@ def filter_recipies(request,type=None):
 		return all_recipies(request)
 
 def my_profile(request):
-	#results=Recipies.objects.filter()
-	return render(request,'website_app/profile.html',{})
+	own_recipies=Recipies.objects.filter(recipie_author_id=request.user.id)
+	return render(request,'website_app/profile.html',
+		{"own_recipies":own_recipies})
 
 def add_to_database2(request,pages=2,category=2):
 	recipies=main(pages=2,category=2)
