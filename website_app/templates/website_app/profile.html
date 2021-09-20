@@ -149,7 +149,12 @@ body{
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " href="{% url 'edit-user-profile'  %}">Edit </a>
+                      <a class="btn btn-info " href="{% url 'edit-user-profile' user.profile.id %}">Edit Profile</a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info " href="{% url 'edit-user-settings' user.profile.id %}">Edit Settings</a>
                     </div>
                   </div>
                 </div>
@@ -166,12 +171,15 @@ body{
     </div>
 
 
-user {{user}}<br>
-user.first_name {{user.first_name}}<br>
-user.last_name {{user.last_name}}<br>
-user.email {{user.email}}<br>
-user.username {{user.username}}<br>
-user.profile.user {{user.profile.user}}<br>
-user.profile.profile_pic {{user.profile.profile_pic}}<br>
-user.profile.phone {{user.profile.phone}}<br>
+
+<h2>Own Recipies</h2>
+<hr>
+{% if own_recipies %}
+<div class="card-deck">
+  {% for recipie in own_recipies %}
+   {% include 'website_app/cards.html' %}
+  {% endfor %}
+ </div> 
+{% endif %}
+
 {% endblock %}

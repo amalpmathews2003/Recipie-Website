@@ -1,13 +1,13 @@
 {% extends 'website_app/base.html' %}
-% block title %
-{recipie.recipie_name}
-% endblock %
+{% block title %}{recipie.recipie_name}{% endblock %}
 {% block content%}
 {{recipie.recipie_name}}<br>
 {{recipie.recipie_type}}<br>
 {{recipie.recipie_author}}<br>
 {{recipie.view_count}}<br>
 {{recipie.like_count}}<br>
+{{recipie.recipie_author.user.id}} user<br>
+{{user.id}}
 <!--
 <ul>
 {% for ingredient in ingredients %}

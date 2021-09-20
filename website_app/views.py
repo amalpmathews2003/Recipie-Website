@@ -17,7 +17,7 @@ def all_recipies(request,recipie_list=None):
 	if recipie_list==None:
 		recipie_list=Recipies.objects.get_queryset().order_by('recipie_name')
 
-	pa=Paginator(recipie_list,9)
+	pa=Paginator(recipie_list,12)
 	page=request.GET.get('page')
 	recipie_list=pa.get_page(page)
 	return render(request,'website_app/recipie_list.html',
@@ -27,6 +27,8 @@ def recipie_description(request,recipie_id):
 	recipie=Recipies.objects.get(recipie_id=recipie_id)
 	recipie.view_count+=1
 	recipie.save()
+	print(recipie.recipie_author.user.username)
+	print(request.user.username)
 	if type(recipie.ingredients)==str:
 		ingredients=list(recipie.ingredients.split(','))
 	if type(recipie.steps)==str:
@@ -76,8 +78,17 @@ def filter_recipies(request,type=None):
 		return all_recipies(request)
 
 def my_profile(request):
-	#results=Recipies.objects.filter()
-	return render(request,'website_app/profile.html',{})
+	recipies=Recipies.objects.all()
+	own_recipies=[]
+	for recipie in recipies:
+		if f"{recipie.recipie_author}"==f"{request.user.username}":
+			own_recipies.append(recipie)
+	print(own_recipies)
+	#print(own_recipies[0].recipie_author)
+	#print(request.user.username)
+	#print(type(own_recipies[0].recipie_author),type(request.user.username))
+	return render(request,'website_app/profile.html',
+		{"own_recipies":own_recipies})
 
 def add_to_database2(request,pages=2,category=2):
 	recipies=main(pages=2,category=2)

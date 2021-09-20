@@ -5,15 +5,27 @@ from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import RegisterUserForm,RegisterUserForm2
+from .models import Profile
+from django.contrib.auth.models import User
 
-
-class UserChangeView(generic.UpdateView):
-	form_class=UserChangeForm
+class UserProfileChangeView(generic.UpdateView):
+	model=Profile
+	fields=["profile_pic","phone","facebook_url","instagram_url",
+	"watsaap"]
 	template_name="authentication/update_profile.html"
-	success_url=reverse_lazy('home page')
+	success_url=reverse_lazy('profile-page')
+class UserSettingsChangeView2(generic.UpdateView):
+	model=Profile
+	fields=["profile_pic","phone","facebook_url","instagram_url",
+	"watsaap"]
+	template_name="authentication/update_profile.html"
 
-	def get_object(self):
-		return self.request.user
+class UserSettingsChangeView(generic.UpdateView):
+	form_class=UserChangeForm
+	template_name="authentication/edit_user_settings.html"
+	success_url=reverse_lazy('profile-page')
+	def get_queryset(self):
+	 return User.objects.all()
 
 def login_user(request): 
 	if request.method=="POST":
