@@ -1,0 +1,79 @@
+<style type="text/css">
+.details_4{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+    background: #f7f7f7;
+    padding: 24px 40px;
+    border-radius: 8px;
+}
+.well_1
+{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Josefin Sans', sans-serif;
+    list-style: none;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+.well_2
+{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Josefin Sans', sans-serif;
+    list-style: none;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+</style>
+<div class="details_4">
+      <ul>
+      {% for ingredient in ingredients %}
+        <li class="well_1"><i class="fa fa-leaf" style="color:#09d405"></i>{{ingredient}}</li>
+        <br>
+      {% endfor %}
+    </ul>
+</div>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  {% for step in steps %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {{forloop.counter}}
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        {{step}}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="1000">
+      <img src="{{recipie.main_image.url}}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

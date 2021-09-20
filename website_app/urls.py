@@ -11,7 +11,9 @@ urlpatterns = [
         name="recipie-discription"),
     path('add_recipie',views.add_recipie,name="add-recipie"),
     path('search_recipies',views.search_recipies,name="search-recipies"),
-    path('profile',views.my_profile,name="profile-page")
+    path('profile',views.my_profile,name="profile-page"),
+    path('add-to-database/<int:pages>/<int:category>',
+        views.add_to_database,name="add-to-database")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
