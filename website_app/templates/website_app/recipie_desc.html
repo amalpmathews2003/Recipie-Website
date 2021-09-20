@@ -1,13 +1,18 @@
 {% extends 'website_app/base.html' %}
-
+% block title %
+{recipie.recipie_name}
+% endblock %
 {% block content%}
 {{recipie.recipie_name}}<br>
 {{recipie.recipie_type}}<br>
 {{recipie.recipie_author}}<br>
 {{recipie.view_count}}<br>
 {{recipie.like_count}}<br>
-{{recipie.ingredients}}<br>
-{{recipie.steps}}<br>
+
+<br><br><br>
 {{recipie.cooking_time}}<br>
+
 <img src="{{recipie.main_image.url}}" width="400">
+
+{% include 'website_app/temp.html' %}
 {% endblock %}
