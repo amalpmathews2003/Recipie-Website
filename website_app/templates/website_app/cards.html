@@ -64,7 +64,7 @@
   {% if recipie.recipie_id %}
   <a href="{% url 'recipie-discription' recipie.recipie_id %}">
  
-  <img src="{{recipie.recipie_author.profile_pic.url}}" width="35" class="rounded float-start" class="rounded"  alt="..." >
+  <img src="{{recipie}}" width="35" class="rounded float-start" class="rounded"  alt="..." >
     <div class="text">
       @{{recipie.recipie_author}}
     </div>

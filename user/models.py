@@ -12,7 +12,7 @@ class Profile(models.Model):
 	profile_pic=models.ImageField(upload_to=f'files/{user}',null=True,blank=True)
 	phone=models.CharField(max_length=20,blank=True,null=True)
 	def __str__(self):
-		return 'j'
+		return self.user.username
 
 
 @receiver(post_save,sender=User)

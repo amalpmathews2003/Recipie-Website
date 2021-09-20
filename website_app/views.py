@@ -10,7 +10,8 @@ import os
 import threading
 
 def home(request):
-	return render(request,'website_app/home.html',{"name":"amal"})
+	return render(request,'website_app/home.html',
+		{})
 
 def all_recipies(request,recipie_list=None):
 	if recipie_list==None:
@@ -26,8 +27,15 @@ def recipie_description(request,recipie_id):
 	recipie=Recipies.objects.get(recipie_id=recipie_id)
 	recipie.view_count+=1
 	recipie.save()
-	ingredients=eval(recipie.ingredients)
-	steps=eval(recipie.steps)
+	if type(recipie.ingredients)==str:
+		ingredients=list(recipie.ingredients.split(','))
+	if type(recipie.steps)==str:
+		steps=list(recipie.steps.split(','))
+	try:
+		ingredients=eval(recipie.ingredients)
+		steps=eval(recipie.steps)
+	except:
+		pass
 	return render(request,'website_app/recipie_desc.html',
 		{"recipie":recipie,"ingredients":ingredients,"steps":steps})
 
@@ -36,7 +44,11 @@ def add_recipie(request):
 	if request.method=="POST":
 		form=RecipieForm(request.POST,request.FILES)
 		if form.is_valid():
-			form.save()
+			f=form.save(commit=False)
+			f.recipie_author=request.user.profile
+			#print(f.recipie_author)
+			f.save()
+			#print(f.recipie_author)
 			return HttpResponseRedirect(
 				'/add_recipie?submitted=True')
 		else:
@@ -51,12 +63,20 @@ def add_recipie(request):
 def search_recipies(request):
 	if request.method=="POST":
 		searched=request.POST['recipie']	
-		results=Recipies.objects.filter(recipie_name__contains=searched).order_by('recipie_name')
+		results=Recipies.objects.filter(recipie_name__icontains=searched).order_by('recipie_name')
+		return all_recipies(request,results)
+	else:
+		return all_recipies(request)
+
+def filter_recipies(request,type=None):
+	if type:
+		results=Recipies.objects.filter(recipie_type__icontains=type).order_by('recipie_name')
 		return all_recipies(request,results)
 	else:
 		return all_recipies(request)
 
 def my_profile(request):
+	#results=Recipies.objects.filter()
 	return render(request,'website_app/profile.html',{})
 
 def add_to_database2(request,pages=2,category=2):
@@ -82,11 +102,10 @@ def add_to_database2(request,pages=2,category=2):
 		recipie.save()
 		print(recipie)
 	print('*'*10)
-	return render(request,'website_app/profile.html',{})
 
 
-def add_to_database(request):
-	t=threading.Thread(target=temp_func)
+def add_to_database(request,pages=2,category=2):
+	t=threading.Thread(target=add_to_database2,args=(pages,category))
 	t.start()
 	return render(request,'website_app/home.html',{})
 	

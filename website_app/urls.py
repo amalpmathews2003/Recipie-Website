@@ -13,7 +13,8 @@ urlpatterns = [
     path('search_recipies',views.search_recipies,name="search-recipies"),
     path('profile',views.my_profile,name="profile-page"),
     path('add-to-database/<int:pages>/<int:category>',
-        views.add_to_database,name="add-to-database")
+        views.add_to_database,name="add-to-database"),
+    path('filter_by/<str:type>',views.filter_recipies,name="filter-by")
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

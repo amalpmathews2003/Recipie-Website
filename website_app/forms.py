@@ -6,8 +6,9 @@ from .models import Recipies
 class RecipieForm(ModelForm):
 	class Meta:
 		model=Recipies
+		exclude=('recipie_author',)
 		#fields="__all__"
-		fields=('recipie_name','recipie_type','recipie_author',
+		fields=('recipie_name','recipie_type',
 			'ingredients','steps','cooking_time','main_image')
 		
 		# labels={
