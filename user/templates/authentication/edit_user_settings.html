@@ -1,0 +1,12 @@
+{% extends 'website_app/base.html' %}
+{% block content %}
+
+<div class="form-group">
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form}}
+		<br>
+		<button class="btn btn-outline-secondary">Update</button>
+	</form>
+</div>
+{% endblock %}
