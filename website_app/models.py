@@ -1,8 +1,5 @@
 from django.db import models
 #from django.contrib.auth.models import User
-import sys
-sys.path.append('../user')
-from user.models import Profile
 
 class WebsiteUser(models.Model):
 	user_id=models.CharField(max_length=10,primary_key=True,unique=True)
@@ -19,7 +16,7 @@ class Recipies(models.Model):
 	recipie_id=models.AutoField(primary_key=True)
 	recipie_name=models.CharField(max_length=100)
 	recipie_type=models.CharField(max_length=20,blank=True)
-	recipie_author=models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+	recipie_author=models.ForeignKey(WebsiteUser,on_delete=models.CASCADE)
 	view_count=models.PositiveIntegerField(default=0,blank=True)
 	like_count=models.PositiveIntegerField(default=0,blank=True)
 	ingredients=models.TextField()

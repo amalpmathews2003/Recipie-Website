@@ -7,6 +7,7 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 #MEDIA_ROOT =  os.path.join(BASE_DIR, 'files')
 #MEDIA_URL = '/'
 
@@ -26,7 +27,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,7 +124,7 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-WHITENOISE_USE_FINDERS = True
+
 django_heroku.settings(locals())
 
 DATABASES['default'].update(dj_database_url.config(conn_max_age=500))

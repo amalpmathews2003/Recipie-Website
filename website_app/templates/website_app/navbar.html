@@ -27,35 +27,19 @@
             <a class="nav-link active" href="{% url 'register-user' %}">Sign-Up</a>
           </li>
         {% endif %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Filter
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="filter_by/beverage">Beverage</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/appetizer">Appetizer</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/breakfast">Breakfast</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/bread">Bread</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/dessert">Dessert</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/snack">Snack</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/maindish">Maindish</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/salad">Salad</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/sidedish">Sidedish</a></li>
-              
-                <li><a class="dropdown-item" href="filter_by/soup">Soup</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-   
-       </ul>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">BreakFast</a></li>
+            <li><a class="dropdown-item" href="#">Lunch</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
       <form class="d-flex" method="POST" action="{% url 'search-recipies' %}">
         {% csrf_token %}
         <input class="form-control me-2" type="search" placeholder="Search Recipies" aria-label="Search" name="recipie">

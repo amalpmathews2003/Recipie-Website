@@ -14,7 +14,7 @@ class Profile(models.Model):
 	instagram_url=models.CharField(max_length=50,blank=True,null=True)
 	watsaap=models.CharField(max_length=50,blank=True,null=True)
 	def __str__(self):
-		return self.user.username
+		return 'j'
 
 """
 
