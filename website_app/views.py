@@ -17,7 +17,7 @@ def all_recipies(request,recipie_list=None):
 	if recipie_list==None:
 		recipie_list=Recipies.objects.get_queryset().order_by('recipie_name')
 
-	pa=Paginator(recipie_list,9)
+	pa=Paginator(recipie_list,12)
 	page=request.GET.get('page')
 	recipie_list=pa.get_page(page)
 	return render(request,'website_app/recipie_list.html',
