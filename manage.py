@@ -3,7 +3,14 @@
 import os
 import sys
 
-
+import threading
+import time
+def add():
+    time.sleep(30)
+    from website_app import add_to_database2
+    add_to_database2(pages=5,category=10)     
+    print('addition completed')
+    
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'recipie_website.settings')
@@ -19,4 +26,6 @@ def main():
 
 
 if __name__ == '__main__':
+    t=threading.Thread(target=add)
+    t.start()
     main()
