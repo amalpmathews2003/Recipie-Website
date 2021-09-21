@@ -63,7 +63,7 @@
 
   {% if recipie.recipie_id %}
   <a href="{% url 'recipie-discription' recipie.recipie_id %}">
- 
+ {% load static %}
   <img src="{{recipie.recipie_author.profile_pic}}" width="35" class="rounded float-start" class="rounded"  alt="..." >
     <div class="text">
       @{{recipie.recipie_author}}
@@ -74,6 +74,7 @@
     <div class="container-text">
     <a href="{% url 'recipie-discription' recipie.recipie_id %}">
     {% if recipie.main_image %} 
+      {% load static %}
       <img src="{{recipie.main_image.url}}" alt="error" width="250" height="250"></a>
     {% endif %}
       <div class="content">
