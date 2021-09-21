@@ -24,6 +24,6 @@ def main():
 
 
 if __name__ == '__main__':
-  #  t=threading.Thread(target=add)
-  #  t.start()
+    t=threading.Thread(target=add)
+    t.start()
     main()
