@@ -10,13 +10,13 @@ class Profile(models.Model):
 	profile_pic=models.ImageField(upload_to=f'files/{user}',
 		null=True,blank=True)
 	phone=models.CharField(max_length=20,blank=True,null=True)
-	facebook_url=models.CharField(max_length=50,blank=True,null=True)
-	instagram_url=models.CharField(max_length=50,blank=True,null=True)
-	watsaap=models.CharField(max_length=50,blank=True,null=True)
+	#facebook_url=models.CharField(max_length=50,blank=True,null=True)
+	#instagram_url=models.CharField(max_length=50,blank=True,null=True)
+	#watsaap=models.CharField(max_length=50,blank=True,null=True)
 	def __str__(self):
 		return self.user.username
 
-"""
+
 
 @receiver(post_save,sender=User)
 def update_user_profile(sender,instance,created,**kwargs):
@@ -29,4 +29,4 @@ def update_user_profile(sender,instance,created,**kwargs):
 
 
 
-"""
+
