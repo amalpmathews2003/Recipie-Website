@@ -46,7 +46,7 @@ def main(pages=2,category=2):
 	recipies=[]
 	categorys=["beverage","appetizer","breakfast","bread","dessert",
 	"snack","maindish","salad","sidedish","soup"]
-	for category in categorys[1:category]:
+	for category in categorys[0:category]:
 		print(category)
 		url=f"https://www.kindmeal.my/recipes.htm?category={category}"
 		for i in range(1,pages):
