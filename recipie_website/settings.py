@@ -7,8 +7,6 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#MEDIA_ROOT =  os.path.join(BASE_DIR, 'files')
-#MEDIA_URL = '/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -18,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+d)k)f)9^=a0^y92it=@mkc9$18wj32s52u96ea$v&y0zmv5lm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -117,9 +115,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 # MEDIA_ROOT =  os.path.join(BASE_DIR, 'files')
 # MEDIA_URL = os.path.join(BASE_DIR, "files")
 
@@ -129,5 +127,5 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WHITENOISE_USE_FINDERS = True
-DATABASES['default'].update(dj_database_url.config())
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 django_heroku.settings(locals())
