@@ -15,11 +15,14 @@ class UserProfileChangeView(generic.UpdateView):
 	fields="__all__"
 	template_name="authentication/update_profile.html"
 	success_url=reverse_lazy('profile-page')
+
 class UserSettingsChangeView2(generic.UpdateView):
 	model=Profile
-	fields=["profile_pic","phone","facebook_url","instagram_url",
-	"watsaap"]
+	#fields=["profile_pic","phone","facebook_url","instagram_url",
+	#"watsaap"]
+	fields="__all__"
 	template_name="authentication/update_profile.html"
+	success_url=reverse_lazy('profile-page')
 
 class UserSettingsChangeView(generic.UpdateView):
 	form_class=UserChangeForm
