@@ -83,7 +83,7 @@ def my_profile(request):
 	return render(request,'website_app/profile.html',
 		{"own_recipies":own_recipies})
 
-def add_to_database2(request,pages=2,category=2):
+def add_to_database2(request,pages=2,category=2,request=None):
 	recipies=main(pages,category)
 	for r in recipies:
 		if Recipies.objects.filter(recipie_name=r.title).exists():
