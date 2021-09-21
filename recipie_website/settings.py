@@ -20,7 +20,7 @@ SECRET_KEY = 'django-insecure-+d)k)f)9^=a0^y92it=@mkc9$18wj32s52u96ea$v&y0zmv5lm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -125,6 +125,5 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WHITENOISE_USE_FINDERS = True
+DATABASES['default'].update(dj_database_url.config())
 django_heroku.settings(locals())
-
-DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
