@@ -63,9 +63,11 @@ body {
 
 <div class="header">
   <a href="#" class="logo">Recipie Website</a>
+  {% if user.is_authenticated %}
   <div class="header-right">	
     <a class="active" href="{% url 'profile-page' %}" ><img src="{{user.profile.profile_pic}}" width="50" ></a>
   </div>
+  {% endif %}
 </div>
 
 
