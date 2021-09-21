@@ -6,7 +6,7 @@ import threading
 import time
 def add():
     time.sleep(30)
-    from .website_app.views import add_to_database2
+    from website_app.views import add_to_database2
     add_to_database2(pages=5,category=10) 
 
 def main():
