@@ -8,6 +8,9 @@ from .download_recipies import main
 import urllib
 import os
 import threading
+import sys
+sys.path.append('../user')
+from user.models import Profile
 
 def home(request):
 	return render(request,'website_app/home.html',
@@ -89,7 +92,7 @@ def add_to_database2(request,pages=2,category=2):
 		recipie.recipie_name=r.title
 		recipie.recipie_type=r.type
 		recipie.servings=r.servings
-		recipie.recipie_author=WebsiteUser.objects.get(user_id=1)	
+		recipie.recipie_author=Profile.objects.get(user_id=1)	
 		recipie.ingredients=r.ingredients
 		recipie.steps=r.steps
 		recipie.cooking_time=r.cooking_time
