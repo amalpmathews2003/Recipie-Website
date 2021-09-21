@@ -84,7 +84,7 @@ def my_profile(request):
 		{"own_recipies":own_recipies})
 
 def add_to_database2(request,pages=2,category=2):
-	recipies=main(pages=2,category=2)
+	recipies=main(pages,category)
 	for r in recipies:
 		if Recipies.objects.filter(recipie_name=r.title).exists():
 			continue
