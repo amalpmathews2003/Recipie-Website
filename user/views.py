@@ -10,9 +10,9 @@ from django.contrib.auth.models import User
 
 class UserProfileChangeView(generic.UpdateView):
 	model=Profile
-	#fields=["profile_pic","phone","facebook_url","instagram_url",
-	#"watsaap"]
-	fields="__all__"
+	fields=["profile_pic","phone","facebook_url","instagram_url",
+	"watsaap"]
+	#fields="__all__"
 	template_name="authentication/update_profile.html"
 	success_url=reverse_lazy('profile-page')
 class UserSettingsChangeView2(generic.UpdateView):
